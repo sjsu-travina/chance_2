@@ -46,11 +46,11 @@ function draw() {
   switch (state){
     case 'title':
       title();
-      cnv.mouseClicked(titleMouseClicked);
+      // cnv.mouseClicked(titleMouseClicked);
       break;
     case 'tutorial':
       tutorial();
-      cnv.mouseClicked(tutorialMouseClicked);
+      // cnv.mouseClicked(tutorialMouseClicked);
       break;
     case 'level 1':
       level1();
@@ -70,15 +70,16 @@ function draw() {
 }
 
 function keyPressed() {
-// Press "s" to change state - change state not functional
-//   if (state === 'title' || state === 'you win') {
-//   if (key === 's' || key === 'S') {
-//   state = 'level l';
-// }
-// } else if (state === 'level 1') {
-//   if (key === 's' || key === 'S' ) {
-//
-// }
+//Press "s" to change state - change state not functional
+  if (state === 'title' || state === 'you win') {
+  if (key === 's' || key === 'S') {
+  state = 'tutorial';
+}
+} else if (state === 'level 1') {
+  if (key === 's' || key === 'S' ) {
+
+}
+}
 
   if (keyCode == LEFT_ARROW){
     player.direction = 'left'
