@@ -54,15 +54,27 @@ function draw() {
       break;
     case 'level 1':
       level1();
-      cnv.mouseClicked(level1MouseClicked);
+      // cnv.mouseClicked(level1MouseClicked);
+      break;
+    case 'level 2':
+      level2();
+      // cnv.mouseClicked(level2MouseClicked);
+      break;
+    case 'level 3':
+      level3();
+      // cnv.mouseClicked(level3MouseClicked);
       break;
     case 'you win':
       youWin();
-      cnv.mouseClicked(youWinMouseClicked);
+      // cnv.mouseClicked(youWinMouseClicked);
+      break;
+    case 'you win 2':
+      youWin2();
+      // cnv.mouseClicked(youWinMouseClicked);
       break;
     case 'game over':
       gameOver();
-      cnv.mouseClicked(gameOverMouseClicked);
+       // cnv.mouseClicked(gameOverMouseClicked);
       break;
     default:
       break;
@@ -71,14 +83,47 @@ function draw() {
 
 function keyPressed() {
 //Press "s" to change state - change state not functional
-  if (state === 'title' || state === 'you win') {
+  if (state === 'title') {
   if (key === 's' || key === 'S') {
   state = 'tutorial';
 }
-} else if (state === 'level 1') {
-  if (key === 's' || key === 'S' ) {
-
+} else if (state === 'tutorial') {
+  if (key === 's' || key === 'S') {
+  state = 'level 1';
 }
+} else if (state === 'level 1') {
+  if (key === 's' || key === 'S') {
+  state = 'you win';
+}
+} else if (state === 'you win') {
+  if (key === 's' || key === 'S') {
+  state = 'level 2';
+}
+} else if (state === 'level 2') {
+  if (key === 's' || key === 'S') {
+  state = 'you win 2';
+}
+} else if (state === 'you win 2') {
+  if (key === 's' || key === 'S') {
+  state = 'level 3';
+}
+} else if (state === 'level 3') {
+  if (key === 's' || key === 'S') {
+  state = 'you win 2';
+}
+} else if (state === 'you win 2') {
+  if (key === 's' || key === 'S') {
+  state = 'title';
+}
+
+// } else if (state === 'you win' || state === 'tutorial') {
+//   if (key === 's' || key === 'S' ) {
+//   state = 'level 1';
+// }
+// } else if (state === 'game over' || state === 'tutorial') {
+//   if (key === 's' || key === 'S' ) {
+//   state = 'level 1';
+// }
 }
 
   if (keyCode == LEFT_ARROW){
@@ -138,7 +183,7 @@ function title(){
   noStroke();
   textSize(30);
   fill(255);
-  text('click anywhere to start', w/2, h/1.4);
+  text('Press "s" to start', w/2, h/1.4);
 
 }
 
@@ -250,7 +295,7 @@ function level1(){
   strokeWeight(3)
   stroke(255);
   fill(0);
-  text(`score: ${points} / 1000`, w/4, h - 30);
+  text(`score: ${points} / 1000 level 1`, w/4, h - 30);
 
 // check point values to win or lose the game
   if (points >= 1000){
@@ -262,6 +307,166 @@ function level1(){
 }
 
 function level1MouseClicked(){
+  points++;
+  console.log('points = + points');
+
+  if (points >= 10){
+    state = 'level2';
+  }
+}
+
+function level2(){
+  imageMode(CENTER);
+  image(bckgImg, w/2, h/2, 600, 600);
+
+  if (random(1) <= 0.01){
+    coins.push(new Coin());
+  }
+
+  if (random(1) <= 0.03){
+    enemies.push(new Enemy());
+  }
+
+  player.display();
+  player.move();
+
+  //iterating through coins array to display and move them
+  // using for loop
+  for (let i = 0; i < coins.length; i++){
+    coins[i].display();
+    coins[i].move();
+    }
+
+  //iterating through enemies array to display and move them
+  // using for loop
+  for (let i = 0; i < enemies.length; i++){
+    enemies[i].display();
+    enemies[i].move();
+    }
+
+
+  // check for collision with coins, if there is a colliion increase points by 1 AND splice that coin out of array
+  // need to iterate backyards through array
+  for (let i = coins.length - 1; i >= 0; i--){
+    // check for collision with player
+    if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2){
+      points += 100;
+      console.log(points);
+      coins.splice(i, 1);
+    } else if (coins[i].y > h){
+      coins.splice(i, 1);
+      console.log('coin is out of town');
+    }
+  }
+
+  // check for collision with enemies, if there is a colliion increase points by 1 AND splice that enemy out of array
+  // need to iterate backyards through array
+  for (let i = enemies.length - 1; i >= 0; i--){
+    // check for collision with player
+    if (dist(player.x, player.y, enemies[i].x , enemies[i].y) <= (player.r + enemies[i].r) / 2.4){
+      points -= 100;
+      console.log(points);
+      enemies.splice(i, 1);
+    } else if (enemies[i].y > h){
+      enemies.splice(i, 1);
+      console.log('enemy is out of town');
+    }
+  }
+  strokeWeight(3)
+  stroke(255);
+  fill(0);
+  text(`score: ${points} / 2000 level 2`, w/4, h - 30);
+
+// check point values to win or lose the game
+  if (points >= 2000){
+    state = 'you win 2';
+  } else if (points <= -1){
+    state = 'game over';
+  }
+
+}
+
+function level2MouseClicked(){
+//   points++;
+//   console.log('points = + points');
+
+  if (points >= 10){
+    state = 'level 3';
+  }
+}
+
+function level3(){
+  imageMode(CENTER);
+  image(bckgImg, w/2, h/2, 600, 600);
+
+    if (random(1) <= 0.01){
+      coins.push(new Coin());
+    }
+
+    if (random(1) <= 0.03){
+      enemies.push(new Enemy());
+    }
+
+    player.display();
+    player.move();
+
+    //iterating through coins array to display and move them
+    // using for loop
+    for (let i = 0; i < coins.length; i++){
+      coins[i].display();
+      coins[i].move();
+      }
+
+    //iterating through enemies array to display and move them
+    // using for loop
+    for (let i = 0; i < enemies.length; i++){
+      enemies[i].display();
+      enemies[i].move();
+      }
+
+
+    // check for collision with coins, if there is a colliion increase points by 1 AND splice that coin out of array
+    // need to iterate backyards through array
+    for (let i = coins.length - 1; i >= 0; i--){
+      // check for collision with player
+      if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2){
+        points += 100;
+        console.log(points);
+        coins.splice(i, 1);
+      } else if (coins[i].y > h){
+        coins.splice(i, 1);
+        console.log('coin is out of town');
+      }
+    }
+
+    // check for collision with enemies, if there is a colliion increase points by 1 AND splice that enemy out of array
+    // need to iterate backyards through array
+    for (let i = enemies.length - 1; i >= 0; i--){
+      // check for collision with player
+      if (dist(player.x, player.y, enemies[i].x , enemies[i].y) <= (player.r + enemies[i].r) / 2.4){
+        points -= 100;
+        console.log(points);
+        enemies.splice(i, 1);
+      } else if (enemies[i].y > h){
+        enemies.splice(i, 1);
+        console.log('enemy is out of town');
+      }
+    }
+    strokeWeight(3)
+    stroke(255);
+    fill(0);
+    text(`score: ${points} / 3000 level 3`, w/4, h - 30);
+
+  // check point values to win or lose the game
+    if (points >= 3000){
+      state = 'you win 2';
+    } else if (points <= -1){
+      state = 'game over';
+    }
+
+}
+
+function level3MouseClicked(){
 //   points++;
 //   console.log('points = + points');
 
@@ -289,8 +494,30 @@ function youWin(){
 }
 
 function youWinMouseClicked(){
-  state = 'title';
-  points = 1;
+  // state = 'level 2';
+  // points = 1;
+}
+function youWin2(){
+  imageMode(CENTER);
+  image(titleImg, w/2, h/2, 600, 600);
+
+  strokeWeight(3);
+  stroke(255);
+  fill(0);
+  textSize(80);
+  text('YOU WIN 2', w/2, h/2);
+
+  noStroke();
+  textSize(30);
+  fill(255);
+  text('click anywhere to restart', w/2, h / 1.5);
+
+  image(coinImg, w/2, h/2.8, 45, 50);
+}
+
+function youWin2MouseClicked(){
+  // state = 'level 2';
+  // points = 1;
 }
 
 function gameOver(){
