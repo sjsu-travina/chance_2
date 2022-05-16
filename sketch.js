@@ -21,6 +21,7 @@ function preload(){
   playerImg = loadImage('assets/butterfly.png');
   coinImg = loadImage('assets/light1.png');
   enemyImg = loadImage('assets/rain1.png');
+
 }
 
 function setup(){
@@ -39,6 +40,25 @@ function setup(){
   //coins[0] = new Coin();
   coins.push(new Coin());
   enemies.push(new Enemy());
+
+  // clickable "start" button - ONLY TEXT
+  keyPressed = new Clickable();
+  keyPressed.locate(200, 360);
+  keyPressed.resize(100, 50);
+  keyPressed.text = "Start";
+  keyPressed.onHover = function () {
+  this.color = "#FFDE00";
+  this.noTint = false;
+  this.tint = "#FF0000";
+};
+keyPressed.onOutside = function () {
+  this.color = "#FFFFFF";
+  this.noTint = true;
+};
+keyPressed.onPress = function () {
+  tutorial();
+};
+
 }
 
 function draw() {
@@ -170,6 +190,8 @@ function title(){
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
 
+  keyPressed.draw();
+
   image(playerImg, w/2, h/1.8)
   image(coinImg, w/2, h/3.2, 200, 200);
 
@@ -193,7 +215,14 @@ function titleMouseClicked(){
 }
 
 function tutorial(){
-  image(titleImg,  w/2, h/2, 600, 600);
+  image(titleImg, w/2, h/2, 600, 600);
+
+  if (keyPressed.onPress) {
+  state = 'tutorial'
+}
+tutorial = 1;
+if (tutorial == 1) {
+// displays the screen
   fill(255);
   rect(width * .5, height * .345, 345, 135, 10);
 
@@ -214,7 +243,7 @@ textSize(20);
 text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 2, height / 1.8, 450);
 fill(255);
 textSize(20);
-text("Click anywhere to start", width / 2, height / 1.18);
+text("Press 's' to start", width / 2, height / 1.18);
 
 
 strokeWeight(3);
@@ -225,7 +254,7 @@ textAlign(CENTER);
 text("Tutorial", width/2, height * 0.12);
 
 image(playerImg, w/2, h/1.11);
-
+  }
 }
 
 function tutorialMouseClicked(){
@@ -295,7 +324,9 @@ function level1(){
   strokeWeight(3)
   stroke(255);
   fill(0);
-  text(`score: ${points} / 1000 level 1`, w/4, h - 30);
+  textSize(30);
+  text(`score: ${points} / 1000`, w/4, h - 30);
+  text('Level 1', w/2, h/8.5);
 
 // check point values to win or lose the game
   if (points >= 1000){
@@ -303,7 +334,6 @@ function level1(){
   } else if (points <= -1){
     state = 'game over';
   }
-
 }
 
 function level1MouseClicked(){
@@ -375,7 +405,9 @@ function level2(){
   strokeWeight(3)
   stroke(255);
   fill(0);
-  text(`score: ${points} / 2000 level 2`, w/4, h - 30);
+  text(`score: ${points} / 2000`, w/4, h - 30);
+  text('Level 2', w/2, h/8.5);
+
 
 // check point values to win or lose the game
   if (points >= 2000){
@@ -455,7 +487,9 @@ function level3(){
     strokeWeight(3)
     stroke(255);
     fill(0);
-    text(`score: ${points} / 3000 level 3`, w/4, h - 30);
+    text(`score: ${points} / 3000`, w/4, h - 30);
+    text('Level 3', w/2, h/8.5);
+
 
   // check point values to win or lose the game
     if (points >= 3000){

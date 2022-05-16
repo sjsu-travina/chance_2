@@ -1,5 +1,5 @@
 
-class Enemy {
+class Enemy2 {
   constructor(){
     this.r = 50;
     this.x = random(w);
@@ -8,7 +8,7 @@ class Enemy {
   }
 
   display(){
-    image(enemyImg, this.x, this.y, this.r, this.r);
+    image(enemy2Img, this.x, this.y, this.r, this.r);
     // rect(this.x, this.y, this.r, this.r);
   }
 
