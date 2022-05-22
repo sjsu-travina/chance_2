@@ -32,7 +32,7 @@ function setup(){
   //frameRate(200);
 
   imageMode(CENTER);
-  rectMode(CENTER);
+  // rectMode(CENTER);
   textFont('monospace');
 
   player = new Player();
@@ -41,24 +41,25 @@ function setup(){
   coins.push(new Coin());
   enemies.push(new Enemy());
 
-  // clickable "start" button - ONLY TEXT
+  // clickable "start" button - ONLY TEXT from title to tutorial
   keyPressed = new Clickable();
-  keyPressed.locate(200, 360);
-  keyPressed.resize(100, 50);
+  // keyPressed.cornerRadius = 0;
+  //keyPressed.textScaled = true;
   keyPressed.text = "Start";
+  keyPressed.locate(w/2.4, h/1.5);
+  keyPressed.resize(100, 50);
+  keyPressed.onOutside = function () {
+    this.color = "#FFFFFF";
+    this.noTint = true;
+  };
   keyPressed.onHover = function () {
   this.color = "#FFDE00";
   this.noTint = false;
   this.tint = "#FF0000";
 };
-keyPressed.onOutside = function () {
-  this.color = "#FFFFFF";
-  this.noTint = true;
-};
 keyPressed.onPress = function () {
   tutorial();
 };
-
 }
 
 function draw() {
@@ -189,7 +190,7 @@ function keyReleased(){
 function title(){
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
-
+  // textAlign(LEFT);
   keyPressed.draw();
 
   image(playerImg, w/2, h/1.8)
@@ -205,7 +206,7 @@ function title(){
   noStroke();
   textSize(30);
   fill(255);
-  text('Press "s" to start', w/2, h/1.4);
+  // text('Press "s" to start', w/2, h/1.4);
 
 }
 
@@ -224,7 +225,10 @@ tutorial = 1;
 if (tutorial == 1) {
 // displays the screen
   fill(255);
+  push();
+  rectMode(CENTER);
   rect(width * .5, height * .345, 345, 135, 10);
+  pop();
 
 image(coinImg, 250, 165);
 image(enemyImg, 250, 206);
