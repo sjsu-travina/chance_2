@@ -1,3 +1,8 @@
+## Artist Statement
+
+Chance is a keyboard game meant to replicate the hurdles we go through on a daily basis. Such as for myself, I've gone through days of sadness, but luckily I was able to overcome those days and into a much brighter and joyest day. In time, there will be brighter and joyest days for you too. In this game, the player will be able to guide a butterfly through a stormy day and into a brighter one. The player will use the arrow keys to maneuver the butterfly. Avoid as much rain as possible and catch enough light to keep the butterfly dry/warm.
+
+
 ## Timeline
 
 5/11 work on adding more levels to my game - include 3 levels; debug any issues
