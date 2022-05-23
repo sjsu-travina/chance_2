@@ -1,5 +1,11 @@
 'use strict';
 
+var start;
+var begin;
+var nextlvl2;
+var nextlvl3;
+var restart;
+
 let state ='title';
 let cnv;
 let points = 0;
@@ -42,24 +48,106 @@ function setup(){
   enemies.push(new Enemy());
 
   // clickable "start" button - ONLY TEXT from title to tutorial
-  keyPressed = new Clickable();
-  // keyPressed.cornerRadius = 0;
-  //keyPressed.textScaled = true;
-  keyPressed.text = "Start";
-  keyPressed.locate(w/2.4, h/1.5);
-  keyPressed.resize(100, 50);
-  keyPressed.onOutside = function () {
-    this.color = "#FFFFFF";
-    this.noTint = true;
-  };
-  keyPressed.onHover = function () {
-  this.color = "#FFDE00";
-  this.noTint = false;
-  this.tint = "#FF0000";
-};
-keyPressed.onPress = function () {
-  tutorial();
-};
+  start = new Clickable();
+    start.locate(w/2.130, h/1.2);
+    start.color = '#dddddd00';
+    start.text = "";
+    start.strokeWeight = 0;
+    start.image = playerImg;
+    start.fitImage = true;
+    start.width = 37;
+    start.height = 30;
+    start.onHover = function() {
+      start.imageScale = 2.7;
+      start.image = playerImg;
+    }
+    start.onPress = function() {
+      state = 'guide';
+    }
+    start.onOutside = function() {
+      start.imageScale = 2.5;
+      start.image = playerImg;
+}
+begin = new Clickable();
+  begin.locate(w/2.130, h/1.2);
+  begin.color = '#dddddd00';
+  begin.text = "";
+  begin.strokeWeight = 0;
+  begin.image = playerImg;
+  begin.fitImage = true;
+  begin.width = 37;
+  begin.height = 30;
+  begin.onHover = function() {
+    begin.imageScale = 2.7;
+    begin.image = playerImg;
+  }
+  begin.onPress = function() {
+    state = 'level 1';
+  }
+  begin.onOutside = function() {
+    begin.imageScale = 2.5;
+    begin.image = playerImg;
+  }
+nextlvl2 = new Clickable();
+  nextlvl2.locate(325, 350);
+  nextlvl2.color = '#dddddd00';
+  nextlvl2.text = "";
+  nextlvl2.strokeWeight = 0;
+  nextlvl2.image = playerImg;
+  nextlvl2.fitImage = true;
+  nextlvl2.width = 37;
+  nextlvl2.height = 30;
+  nextlvl2.onHover = function() {
+    nextlvl2.imageScale = 1.2;
+    nextlvl2.image = playerImg;
+  }
+  nextlvl2.onPress = function() {
+    state = 'level 2';
+  }
+  nextlvl2.onOutside = function() {
+    nextlvl2.imageScale = 1.0;
+    nextlvl2.image = playerImg;
+  }
+nextlvl3 = new Clickable();
+  nextlvl3.locate(325, 350);
+  nextlvl3.color = '#dddddd00';
+  nextlvl3.text = "";
+  nextlvl3.strokeWeight = 0;
+  nextlvl3.image = playerImg;
+  nextlvl3.fitImage = true;
+  nextlvl3.width = 37;
+  nextlvl3.height = 30;
+  nextlvl3.onHover = function() {
+    nextlvl3.imageScale = 1.2;
+    nextlvl3.image = playerImg;
+  }
+  nextlvl3.onPress = function() {
+    state = 'level 3';
+  }
+  nextlvl3.onOutside = function() {
+    nextlvl3.imageScale = 1.0;
+    nextlvl3.image = playerImg;
+  }
+restart = new Clickable();
+  restart.locate(325, 350);
+  restart.color = '#dddddd00';
+  restart.text = "";
+  restart.strokeWeight = 0;
+  restart.image = playerImg;
+  restart.fitImage = true;
+  restart.width = 37;
+  restart.height = 30;
+  restart.onHover = function() {
+    restart.imageScale = 1.2;
+    restart.image = playerImg;
+  }
+  restart.onPress = function() {
+    state = 'title';
+  }
+  restart.onOutside = function() {
+    restart.imageScale = 1.0;
+    restart.image = playerImg;
+  }
 }
 
 function draw() {
@@ -69,8 +157,8 @@ function draw() {
       title();
       // cnv.mouseClicked(titleMouseClicked);
       break;
-    case 'tutorial':
-      tutorial();
+    case 'guide':
+      tutorialStage();
       // cnv.mouseClicked(tutorialMouseClicked);
       break;
     case 'level 1':
@@ -104,11 +192,12 @@ function draw() {
 
 function keyPressed() {
 //Press "s" to change state - change state not functional
-  if (state === 'title') {
-  if (key === 's' || key === 'S') {
-  state = 'tutorial';
+
+if (state === 'title' || state === 'game over') {
+ if (key === 's' || key === 'S') {
+ state = 'guide';
 }
-} else if (state === 'tutorial') {
+} else if (state === 'guide') {
   if (key === 's' || key === 'S') {
   state = 'level 1';
 }
@@ -136,16 +225,16 @@ function keyPressed() {
   if (key === 's' || key === 'S') {
   state = 'title';
 }
-
-// } else if (state === 'you win' || state === 'tutorial') {
-//   if (key === 's' || key === 'S' ) {
-//   state = 'level 1';
-// }
-// } else if (state === 'game over' || state === 'tutorial') {
-//   if (key === 's' || key === 'S' ) {
-//   state = 'level 1';
-// }
 }
+// } else if (state === 'you win' || state === 'guide') {
+//   if (key === 's' || key === 'S' ) {
+//   state = 'level 1';
+// }
+// } else if (state === 'game over' || state === 'guide') {
+//   if (key === 's' || key === 'S' ) {
+//   state = 'level 1';
+// }
+// }
 
   if (keyCode == LEFT_ARROW){
     player.direction = 'left'
@@ -191,9 +280,9 @@ function title(){
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
   // textAlign(LEFT);
-  keyPressed.draw();
+  start.draw();
 
-  image(playerImg, w/2, h/1.8)
+  // image(playerImg, w/2, h/1.8)
   image(coinImg, w/2, h/3.2, 200, 200);
 
   strokeWeight(3);
@@ -211,19 +300,19 @@ function title(){
 }
 
 function titleMouseClicked(){
-  console.log('canvas is clicked on title page');
-  state = 'tutorial'
+  // console.log('canvas is clicked on title page');
+  // state = 'guide'
 }
 
-function tutorial(){
+function tutorialStage(){
   image(titleImg, w/2, h/2, 600, 600);
 
-  if (keyPressed.onPress) {
-  state = 'tutorial'
-}
-tutorial = 1;
-if (tutorial == 1) {
-// displays the screen
+//   if (start.onPress) {
+//   state = 'guide'
+// }
+// tutorialStage = 1;
+// if (tutorialStage == 1) {
+// // displays the screen
   fill(255);
   push();
   rectMode(CENTER);
@@ -244,10 +333,11 @@ text(" Press ← → ↑ ↓ to move the butterfly", width/2, height * 0.42);
 
 fill(255);
 textSize(20);
-text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 2, height / 1.8, 450);
+textAlign(CENTER);
+text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 7.5, height / 1.8, 450);
 fill(255);
-textSize(20);
-text("Press 's' to start", width / 2, height / 1.18);
+// textSize(20);
+// text("Press 's' to start", width / 2, height / 1.18);
 
 
 strokeWeight(3);
@@ -257,13 +347,14 @@ textSize(40);
 textAlign(CENTER);
 text("Tutorial", width/2, height * 0.12);
 
-image(playerImg, w/2, h/1.11);
-  }
+// image(playerImg, w/2, h/1.11);
+
+begin.draw();
 }
 
 function tutorialMouseClicked(){
-  console.log('canvas is clicked on title page');
-  state = 'level 1'
+  // console.log('canvas is clicked on title page');
+  // state = 'level 1'
 }
 
 function level1(){
@@ -329,11 +420,11 @@ function level1(){
   stroke(255);
   fill(0);
   textSize(30);
-  text(`score: ${points} / 1000`, w/4, h - 30);
+  text(`score: ${points} / 100`, w/4, h - 30);
   text('Level 1', w/2, h/8.5);
 
 // check point values to win or lose the game
-  if (points >= 1000){
+  if (points >= 100){
     state = 'you win';
   } else if (points <= -1){
     state = 'game over';
@@ -409,17 +500,16 @@ function level2(){
   strokeWeight(3)
   stroke(255);
   fill(0);
-  text(`score: ${points} / 2000`, w/4, h - 30);
+  text(`score: ${points} / 200`, w/4, h - 30);
   text('Level 2', w/2, h/8.5);
 
 
 // check point values to win or lose the game
-  if (points >= 2000){
+  if (points >= 200){
     state = 'you win 2';
   } else if (points <= -1){
     state = 'game over';
   }
-
 }
 
 function level2MouseClicked(){
@@ -491,12 +581,12 @@ function level3(){
     strokeWeight(3)
     stroke(255);
     fill(0);
-    text(`score: ${points} / 3000`, w/4, h - 30);
+    text(`score: ${points} / 300`, w/4, h - 30);
     text('Level 3', w/2, h/8.5);
 
 
   // check point values to win or lose the game
-    if (points >= 3000){
+    if (points >= 300){
       state = 'you win 2';
     } else if (points <= -1){
       state = 'game over';
@@ -529,6 +619,8 @@ function youWin(){
   text('click anywhere to restart', w/2, h / 1.5);
 
   image(coinImg, w/2, h/2.8, 45, 50);
+  nextlvl2.draw();
+
 }
 
 function youWinMouseClicked(){
@@ -551,6 +643,9 @@ function youWin2(){
   text('click anywhere to restart', w/2, h / 1.5);
 
   image(coinImg, w/2, h/2.8, 45, 50);
+
+  nextlvl3.draw();
+
 }
 
 function youWin2MouseClicked(){
@@ -581,6 +676,8 @@ function gameOver(){
     fill(255);
     text('click anywhere to play again', w/2, h / 1.5);
 
+    restart.draw();
+
   } else {
     // game over
     strokeWeight(3);
@@ -592,6 +689,7 @@ function gameOver(){
     fill(255);
     textSize(30);
     text('click anywhere to restart', w/2, h / 1.5);
+
   }
 }
 
@@ -604,4 +702,5 @@ function gameOverMouseClicked(){
     }
 
   points = 0;
+
 }
