@@ -18,7 +18,9 @@ let enemies = [];
 let playerImg;
 let coinImg;
 let enemyImg;
+let darkImg;
 let bckgImg;
+let dayImg;
 let titleImg;
 
 
@@ -31,7 +33,9 @@ function preload(){
 }
 
 function setup(){
+ darkImg = loadImage('assets/dark_bkgd.PNG')
  bckgImg = loadImage('assets/level_bckg.png');
+ dayImg = loadImage('assets/daylight_bkgd.PNG');
  titleImg = loadImage('assets/background.png');
 
  cnv = createCanvas(w, h);
@@ -359,7 +363,7 @@ function tutorialMouseClicked(){
 
 function level1(){
   imageMode(CENTER);
-  image(bckgImg, w/2, h/2, 600, 600);
+  image(darkImg, w/2, h/2, 600, 600);
   // imageMode(CENTER);
   // image(bckgImg, w/2, h/2, 600, 600);
 
@@ -420,11 +424,11 @@ function level1(){
   stroke(255);
   fill(0);
   textSize(30);
-  text(`score: ${points} / 100`, w/4, h - 30);
+  text(`score: ${points} / 1000`, w/4, h - 30);
   text('Level 1', w/2, h/8.5);
 
 // check point values to win or lose the game
-  if (points >= 100){
+  if (points >= 1000){
     state = 'you win';
   } else if (points <= -1){
     state = 'game over';
@@ -500,12 +504,12 @@ function level2(){
   strokeWeight(3)
   stroke(255);
   fill(0);
-  text(`score: ${points} / 200`, w/4, h - 30);
+  text(`score: ${points} / 2000`, w/4, h - 30);
   text('Level 2', w/2, h/8.5);
 
 
 // check point values to win or lose the game
-  if (points >= 200){
+  if (points >= 2000){
     state = 'you win 2';
   } else if (points <= -1){
     state = 'game over';
@@ -523,7 +527,7 @@ function level2MouseClicked(){
 
 function level3(){
   imageMode(CENTER);
-  image(bckgImg, w/2, h/2, 600, 600);
+  image(dayImg, w/2, h/2, 600, 600);
 
     if (random(1) <= 0.01){
       coins.push(new Coin());
@@ -581,12 +585,12 @@ function level3(){
     strokeWeight(3)
     stroke(255);
     fill(0);
-    text(`score: ${points} / 300`, w/4, h - 30);
+    text(`score: ${points} / 3000`, w/4, h - 30);
     text('Level 3', w/2, h/8.5);
 
 
   // check point values to win or lose the game
-    if (points >= 300){
+    if (points >= 3000){
       state = 'you win 2';
     } else if (points <= -1){
       state = 'game over';
