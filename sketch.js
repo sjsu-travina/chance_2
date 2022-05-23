@@ -197,39 +197,39 @@ function draw() {
 function keyPressed() {
 //Press "s" to change state - change state not functional
 
-// if (state === 'title' || state === 'game over') {
-//  if (key === 's' || key === 'S') {
-//  state = 'guide';
-// }
-// } else if (state === 'guide') {
-//   if (key === 's' || key === 'S') {
-//   state = 'level 1';
-// }
-// } else if (state === 'level 1') {
-//   if (key === 's' || key === 'S') {
-//   state = 'you win';
-// }
-// } else if (state === 'you win') {
-//   if (key === 's' || key === 'S') {
-//   state = 'level 2';
-// }
-// } else if (state === 'level 2') {
-//   if (key === 's' || key === 'S') {
-//   state = 'you win 2';
-// }
-// } else if (state === 'you win 2') {
-//   if (key === 's' || key === 'S') {
-//   state = 'level 3';
-// }
-// } else if (state === 'level 3') {
-//   if (key === 's' || key === 'S') {
-//   state = 'you win 2';
-// }
-// } else if (state === 'you win 2') {
-//   if (key === 's' || key === 'S') {
-//   state = 'title';
-// }
-// }
+if (state === 'title' || state === 'game over') {
+ if (key === 's' || key === 'S') {
+ state = 'guide';
+}
+} else if (state === 'guide') {
+  if (key === 's' || key === 'S') {
+  state = 'level 1';
+}
+} else if (state === 'level 1') {
+  if (key === 's' || key === 'S') {
+  state = 'you win';
+}
+} else if (state === 'you win') {
+  if (key === 's' || key === 'S') {
+  state = 'level 2';
+}
+} else if (state === 'level 2') {
+  if (key === 's' || key === 'S') {
+  state = 'you win 2';
+}
+} else if (state === 'you win 2') {
+  if (key === 's' || key === 'S') {
+  state = 'level 3';
+}
+} else if (state === 'level 3') {
+  if (key === 's' || key === 'S') {
+  state = 'you win 2';
+}
+} else if (state === 'you win 2') {
+  if (key === 's' || key === 'S') {
+  state = 'title';
+}
+}
 // } else if (state === 'you win' || state === 'guide') {
 //   if (key === 's' || key === 'S' ) {
 //   state = 'level 1';
@@ -281,6 +281,7 @@ function keyReleased(){
 }
 
 function title(){
+  background(0);
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
   // textAlign(LEFT);
@@ -309,6 +310,7 @@ function titleMouseClicked(){
 }
 
 function tutorialStage(){
+  background(0);
   image(titleImg, w/2, h/2, 600, 600);
 
 //   if (start.onPress) {
@@ -362,6 +364,7 @@ function tutorialMouseClicked(){
 }
 
 function level1(){
+  background(0);
   imageMode(CENTER);
   image(darkImg, w/2, h/2, 600, 600);
   // imageMode(CENTER);
@@ -445,6 +448,7 @@ function level1MouseClicked(){
 }
 
 function level2(){
+  background(0);
   imageMode(CENTER);
   image(bckgImg, w/2, h/2, 600, 600);
 
@@ -526,6 +530,7 @@ function level2MouseClicked(){
 }
 
 function level3(){
+  background(0);
   imageMode(CENTER);
   image(dayImg, w/2, h/2, 600, 600);
 
@@ -608,6 +613,7 @@ function level3MouseClicked(){
 }
 
 function youWin(){
+  background(0);
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
 
@@ -632,6 +638,7 @@ function youWinMouseClicked(){
   // points = 1;
 }
 function youWin2(){
+  background(0);
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
 
@@ -658,6 +665,7 @@ function youWin2MouseClicked(){
 }
 
 function gameOver(){
+  background(0);
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
 
