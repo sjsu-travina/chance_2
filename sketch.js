@@ -33,7 +33,7 @@ function preload(){
 }
 
 function setup(){
- darkImg = loadImage('assets/dark_bkgd.PNG')
+ darkImg = loadImage('assets/dark_bkgd.png')
  bckgImg = loadImage('assets/level_bckg.png');
  dayImg = loadImage('assets/daylight_bkgd.png');
  titleImg = loadImage('assets/background.png');
@@ -53,7 +53,7 @@ function setup(){
 
   // clickable "start" button - ONLY TEXT from title to tutorial
   start = new Clickable();
-    start.locate(w/2.130, h/1.2);
+    start.locate(w/2.130, h/1.5);
     start.color = '#dddddd00';
     start.text = "";
     start.strokeWeight = 0;
@@ -300,7 +300,7 @@ function title(){
   noStroke();
   textSize(30);
   fill(255);
-  text("Start", width / 2, height / 1.05);
+  text("Start", width / 2, height / 1.25);
 
 }
 
