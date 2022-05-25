@@ -35,7 +35,7 @@ function preload(){
 function setup(){
  darkImg = loadImage('assets/dark_bkgd.PNG')
  bckgImg = loadImage('assets/level_bckg.png');
- dayImg = loadImage('assets/daylight_bkgd.PNG');
+ dayImg = loadImage('assets/daylight_bkgd.png');
  titleImg = loadImage('assets/background.png');
 
  cnv = createCanvas(w, h);
