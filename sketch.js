@@ -365,11 +365,14 @@ function tutorialMouseClicked(){
 
 function level1(){
   background(0);
+
+  push();
   // imageMode(CENTER);
   // image(darkImg, 600, 600);
   // imageMode(CENTER);
-  // imageMode(CENTER);
+  imageMode(CENTER);
   image(darkImg, w/5, h/2, 600, 600);
+  pop();
 
   if (random(1) <= 0.01){
     coins.push(new Coin());
