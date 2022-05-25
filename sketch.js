@@ -92,66 +92,66 @@ begin = new Clickable();
     begin.imageScale = 2.5;
     begin.image = playerImg;
   }
-nextlvl2 = new Clickable();
-  nextlvl2.locate(325, 350);
-  nextlvl2.color = '#dddddd00';
-  nextlvl2.text = "";
-  nextlvl2.strokeWeight = 0;
-  nextlvl2.image = playerImg;
-  nextlvl2.fitImage = true;
-  nextlvl2.width = 37;
-  nextlvl2.height = 30;
-  nextlvl2.onHover = function() {
-    nextlvl2.imageScale = 1.2;
+  nextlvl2 = new Clickable();
+    nextlvl2.locate(w/2.130, h/1.5);
+    nextlvl2.color = '#dddddd00';
+    nextlvl2.text = "";
+    nextlvl2.strokeWeight = 0;
     nextlvl2.image = playerImg;
+    nextlvl2.fitImage = true;
+    nextlvl2.width = 37;
+    nextlvl2.height = 30;
+    nextlvl2.onHover = function() {
+      nextlvl2.imageScale = 2.7;
+      nextlvl2.image = playerImg;
+    }
+    nextlvl2.onPress = function() {
+      state = 'level 2';
+    }
+    nextlvl2.onOutside = function() {
+      nextlvl2.imageScale = 2.5;
+      nextlvl2.image = playerImg;
   }
-  nextlvl2.onPress = function() {
-    state = 'level 2';
-  }
-  nextlvl2.onOutside = function() {
-    nextlvl2.imageScale = 1.0;
-    nextlvl2.image = playerImg;
-  }
-nextlvl3 = new Clickable();
-  nextlvl3.locate(325, 350);
-  nextlvl3.color = '#dddddd00';
-  nextlvl3.text = "";
-  nextlvl3.strokeWeight = 0;
-  nextlvl3.image = playerImg;
-  nextlvl3.fitImage = true;
-  nextlvl3.width = 37;
-  nextlvl3.height = 30;
-  nextlvl3.onHover = function() {
-    nextlvl3.imageScale = 1.2;
+  nextlvl3 = new Clickable();
+    nextlvl3.locate(w/2.130, h/1.5);
+    nextlvl3.color = '#dddddd00';
+    nextlvl3.text = "";
+    nextlvl3.strokeWeight = 0;
     nextlvl3.image = playerImg;
-  }
-  nextlvl3.onPress = function() {
-    state = 'level 3';
-  }
-  nextlvl3.onOutside = function() {
-    nextlvl3.imageScale = 1.0;
-    nextlvl3.image = playerImg;
-  }
-restart = new Clickable();
-  restart.locate(325, 350);
-  restart.color = '#dddddd00';
-  restart.text = "";
-  restart.strokeWeight = 0;
-  restart.image = playerImg;
-  restart.fitImage = true;
-  restart.width = 37;
-  restart.height = 30;
-  restart.onHover = function() {
-    restart.imageScale = 1.2;
+    nextlvl3.fitImage = true;
+    nextlvl3.width = 37;
+    nextlvl3.height = 30;
+    nextlvl3.onHover = function() {
+      nextlvl3.imageScale = 2.7;
+      nextlvl3.image = playerImg;
+    }
+    nextlvl3.onPress = function() {
+      state = 'level 3';
+    }
+    nextlvl3.onOutside = function() {
+      nextlvl3.imageScale = 2.5;
+      nextlvl3.image = playerImg;
+}
+  restart = new Clickable();
+    restart.locate(w/2.130, h/1.5);
+    restart.color = '#dddddd00';
+    restart.text = "";
+    restart.strokeWeight = 0;
     restart.image = playerImg;
-  }
-  restart.onPress = function() {
-    state = 'title';
-  }
-  restart.onOutside = function() {
-    restart.imageScale = 1.0;
-    restart.image = playerImg;
-  }
+    restart.fitImage = true;
+    restart.width = 37;
+    restart.height = 30;
+    restart.onHover = function() {
+      restart.imageScale = 2.7;
+      restart.image = playerImg;
+    }
+    restart.onPress = function() {
+      state = 'title';
+    }
+    restart.onOutside = function() {
+      restart.imageScale = 2.5;
+      restart.image = playerImg;
+    }
 //   title = new Clickable();
 //     title.locate(w/2.130, h/1.5);
 //     title.color = '#dddddd00';
@@ -654,7 +654,7 @@ function youWin(){
   noStroke();
   textSize(30);
   fill(255);
-  text('Next Level', w/2, h / 1.5);
+  text('Next Level', w/2, h / 1.6);
 
   image(coinImg, w/2, h/2.8, 45, 50);
   nextlvl2.draw();
@@ -676,12 +676,12 @@ function youWin2(){
   stroke(255);
   fill(0);
   textSize(80);
-  text('YOU WIN 2', w/2, h/2);
+  text('YOU WIN', w/2, h/2);
 
   noStroke();
   textSize(30);
   fill(255);
-  text('title screen', w/2, h / 1.5);
+  text('Next Level', w/2, h / 1.6);
 
   image(coinImg, w/2, h/2.8, 45, 50);
 
@@ -702,12 +702,12 @@ function youWin3(){
   stroke(255);
   fill(0);
   textSize(80);
-  text('YOU WIN 3', w/2, h/2);
+  text('YOU WIN', w/2, h/2);
 
   noStroke();
   textSize(30);
   fill(255);
-  text('title screen', w/2, h / 1.5);
+  text('Title Screen', w/2, h / 1.6);
 
   image(coinImg, w/2, h/2.8, 45, 50);
 
