@@ -369,7 +369,7 @@ function level1(){
   // image(darkImg, 600, 600);
   // imageMode(CENTER);
   // imageMode(CENTER);
-  image(darkImg, w/2, h/2, 600, 600);
+  image(darkImg, w/3, h/2, 600, 600);
 
   if (random(1) <= 0.01){
     coins.push(new Coin());
