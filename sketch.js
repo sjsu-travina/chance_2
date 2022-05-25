@@ -627,7 +627,7 @@ function youWin(){
   noStroke();
   textSize(30);
   fill(255);
-  text('click anywhere to restart', w/2, h / 1.5);
+  text('Next Level', w/2, h / 1.5);
 
   image(coinImg, w/2, h/2.8, 45, 50);
   nextlvl2.draw();
@@ -652,7 +652,7 @@ function youWin2(){
   noStroke();
   textSize(30);
   fill(255);
-  text('click anywhere to restart', w/2, h / 1.5);
+  text('title screen', w/2, h / 1.5);
 
   image(coinImg, w/2, h/2.8, 45, 50);
 
