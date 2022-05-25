@@ -428,11 +428,11 @@ function level1(){
   stroke(255);
   fill(0);
   textSize(30);
-  text(`score: ${points} / 1000`, w/4, h - 30);
+  text(`score: ${points} / 100`, w/4, h - 30);
   text('Level 1', w/2, h/8.5);
 
 // check point values to win or lose the game
-  if (points >= 1000){
+  if (points >= 100){
     state = 'you win';
   } else if (points <= -1){
     state = 'game over';
@@ -509,12 +509,12 @@ function level2(){
   strokeWeight(3)
   stroke(255);
   fill(0);
-  text(`score: ${points} / 2000`, w/4, h - 30);
+  text(`score: ${points} / 200`, w/4, h - 30);
   text('Level 2', w/2, h/8.5);
 
 
 // check point values to win or lose the game
-  if (points >= 2000){
+  if (points >= 200){
     state = 'you win 2';
   } else if (points <= -1){
     state = 'game over';
@@ -591,12 +591,12 @@ function level3(){
     strokeWeight(3)
     stroke(255);
     fill(0);
-    text(`score: ${points} / 3000`, w/4, h - 30);
+    text(`score: ${points} / 300`, w/4, h - 30);
     text('Level 3', w/2, h/8.5);
 
 
   // check point values to win or lose the game
-    if (points >= 3000){
+    if (points >= 300){
       state = 'you win 2';
     } else if (points <= -1){
       state = 'game over';
