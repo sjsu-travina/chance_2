@@ -197,39 +197,39 @@ function draw() {
 function keyPressed() {
 //Press "s" to change state - change state not functional
 
-if (state === 'title' || state === 'game over') {
- if (key === 's' || key === 'S') {
- state = 'guide';
-}
-} else if (state === 'guide') {
-  if (key === 's' || key === 'S') {
-  state = 'level 1';
-}
-} else if (state === 'level 1') {
-  if (key === 's' || key === 'S') {
-  state = 'you win';
-}
-} else if (state === 'you win') {
-  if (key === 's' || key === 'S') {
-  state = 'level 2';
-}
-} else if (state === 'level 2') {
-  if (key === 's' || key === 'S') {
-  state = 'you win 2';
-}
-} else if (state === 'you win 2') {
-  if (key === 's' || key === 'S') {
-  state = 'level 3';
-}
-} else if (state === 'level 3') {
-  if (key === 's' || key === 'S') {
-  state = 'you win 2';
-}
-} else if (state === 'you win 2') {
-  if (key === 's' || key === 'S') {
-  state = 'title';
-}
-}
+// if (state === 'title' || state === 'game over') {
+//  if (key === 's' || key === 'S') {
+//  state = 'guide';
+// }
+// } else if (state === 'guide') {
+//   if (key === 's' || key === 'S') {
+//   state = 'level 1';
+// }
+// } else if (state === 'level 1') {
+//   if (key === 's' || key === 'S') {
+//   state = 'you win';
+// }
+// } else if (state === 'you win') {
+//   if (key === 's' || key === 'S') {
+//   state = 'level 2';
+// }
+// } else if (state === 'level 2') {
+//   if (key === 's' || key === 'S') {
+//   state = 'you win 2';
+// }
+// } else if (state === 'you win 2') {
+//   if (key === 's' || key === 'S') {
+//   state = 'level 3';
+// }
+// } else if (state === 'level 3') {
+//   if (key === 's' || key === 'S') {
+//   state = 'you win 2';
+// }
+// } else if (state === 'you win 2') {
+//   if (key === 's' || key === 'S') {
+//   state = 'title';
+// }
+// }
 // } else if (state === 'you win' || state === 'guide') {
 //   if (key === 's' || key === 'S' ) {
 //   state = 'level 1';
@@ -368,7 +368,7 @@ function level1(){
   // imageMode(CENTER);
   // image(darkImg, 600, 600);
   // imageMode(CENTER);
-  imageMode(CENTER);
+  // imageMode(CENTER);
   image(darkImg, w/2, h/2, 600, 600);
 
   if (random(1) <= 0.01){
