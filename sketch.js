@@ -9,7 +9,7 @@ var restart;
 let state ='title';
 let cnv;
 let points = 0;
-let lives = 3;
+let lives = 2;
 let w = 600;
 let h = 600;
 let player = 1;
@@ -203,11 +203,11 @@ function draw() {
       break;
     case 'you win 2':
       youWin2();
-      // cnv.mouseClicked(youWinMouseClicked);
+      // cnv.mouseClicked(youWin2MouseClicked);
       break;
     case 'you win 3':
       youWin3();
-      // cnv.mouseClicked(youWinMouseClicked);
+      cnv.mouseClicked(youWin3MouseClicked);
       break;
     case 'game over':
       gameOver();
@@ -384,7 +384,7 @@ begin.draw();
 
 function tutorialMouseClicked(){
   // console.log('canvas is clicked on title page');
-  // state = 'level 1'
+  state = 'level 1'
 }
 
 function level1(){
@@ -471,7 +471,7 @@ function level1MouseClicked(){
   console.log('points = + points');
 
   if (points >= 10){
-    state = 'level2';
+    state = 'level 2';
   }
 }
 
@@ -594,7 +594,7 @@ function level3(){
       // check for collision with player
       if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2){
         points += 100;
-        console.log(points);
+        // console.log(points);
         coins.splice(i, 1);
       } else if (coins[i].y > h){
         coins.splice(i, 1);
@@ -662,10 +662,10 @@ function youWin(){
 }
 
 function youWinMouseClicked(){
-  console.log('canvas is clicked on game over page');
+  console.log('canvas is clicked on you win page');
 
   state = 'level 2';
-  points = 1;
+  points = 0;
 }
 function youWin2(){
   background(0);
@@ -691,7 +691,7 @@ function youWin2(){
 function youWin2MouseClicked(){
 
   state = 'level 3';
-   points = 1;
+   points = 0;
 }
 function youWin3(){
   background(0);
@@ -715,8 +715,12 @@ function youWin3(){
 }
 
 function youWin3MouseClicked(){
+  // console.log('canvas is clicked on you win 3 page');
 
-  state = 'title';
+  if (state = 'guide') {
+  } else {
+  state = 'level 1';
+}
    points = 0;
 }
 
@@ -769,7 +773,7 @@ function gameOverMouseClicked(){
       lives--; // if you have a life, you lose one!
       state = 'level 1';
     } else {
-      state = 'guide';
+      state = 'level 2';
     }
 
   points = 0;
