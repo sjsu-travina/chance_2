@@ -343,7 +343,7 @@ textAlign(CENTER);
 text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 7.5, height / 1.8, 450);
 fill(255);
 // textSize(20);
-// text("Press 's' to start", width / 2, height / 1.18);
+text("Start", width / 2, height / 1.18);
 
 
 strokeWeight(3);
