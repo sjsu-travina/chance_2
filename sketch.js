@@ -152,6 +152,26 @@ restart = new Clickable();
     restart.imageScale = 1.0;
     restart.image = playerImg;
   }
+//   title = new Clickable();
+//     title.locate(w/2.130, h/1.5);
+//     title.color = '#dddddd00';
+//     title.text = "";
+//     title.strokeWeight = 0;
+//     title.image = playerImg;
+//     title.fitImage = true;
+//     title.width = 37;
+//     title.height = 30;
+//     title.onHover = function() {
+//       title.imageScale = 2.7;
+//       title.image = playerImg;
+//     }
+//     title.onPress = function() {
+//       state = 'title';
+//     }
+//     title.onOutside = function() {
+//       title.imageScale = 2.5;
+//     title.image = playerImg;
+// }
 }
 
 function draw() {
@@ -185,9 +205,13 @@ function draw() {
       youWin2();
       // cnv.mouseClicked(youWinMouseClicked);
       break;
+    case 'you win 3':
+      youWin3();
+      // cnv.mouseClicked(youWinMouseClicked);
+      break;
     case 'game over':
       gameOver();
-       // cnv.mouseClicked(gameOverMouseClicked);
+    cnv.mouseClicked(gameOverMouseClicked);
       break;
     default:
       break;
@@ -197,7 +221,7 @@ function draw() {
 function keyPressed() {
 //Press "s" to change state - change state not functional
 
-// if (state === 'title' || state === 'game over') {
+// if (state === 'game over') {
 //  if (key === 's' || key === 'S') {
 //  state = 'guide';
 // }
@@ -600,7 +624,7 @@ function level3(){
 
   // check point values to win or lose the game
     if (points >= 300){
-      state = 'you win 2';
+      state = 'you win 3';
     } else if (points <= -1){
       state = 'game over';
     }
@@ -638,8 +662,10 @@ function youWin(){
 }
 
 function youWinMouseClicked(){
-  // state = 'level 2';
-  // points = 1;
+  console.log('canvas is clicked on game over page');
+
+  state = 'level 2';
+  points = 1;
 }
 function youWin2(){
   background(0);
@@ -660,12 +686,38 @@ function youWin2(){
   image(coinImg, w/2, h/2.8, 45, 50);
 
   nextlvl3.draw();
-
 }
 
 function youWin2MouseClicked(){
-  // state = 'level 2';
-  // points = 1;
+
+  state = 'level 3';
+   points = 1;
+}
+function youWin3(){
+  background(0);
+  imageMode(CENTER);
+  image(titleImg, w/2, h/2, 600, 600);
+
+  strokeWeight(3);
+  stroke(255);
+  fill(0);
+  textSize(80);
+  text('YOU WIN 3', w/2, h/2);
+
+  noStroke();
+  textSize(30);
+  fill(255);
+  text('title screen', w/2, h / 1.5);
+
+  image(coinImg, w/2, h/2.8, 45, 50);
+
+  restart.draw();
+}
+
+function youWin3MouseClicked(){
+
+  state = 'title';
+   points = 0;
 }
 
 function gameOver(){
@@ -692,7 +744,6 @@ function gameOver(){
     fill(255);
     text('click anywhere to play again', w/2, h / 1.5);
 
-    restart.draw();
 
   } else {
     // game over
@@ -706,15 +757,19 @@ function gameOver(){
     textSize(30);
     text('click anywhere to restart', w/2, h / 1.5);
 
+    restart.draw();
   }
 }
 
 function gameOverMouseClicked(){
+  console.log('canvas is clicked on game over page');
+  // state = 'title'
+
     if (lives >= 0) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
       lives--; // if you have a life, you lose one!
       state = 'level 1';
     } else {
-      state = 'title';
+      state = 'guide';
     }
 
   points = 0;
