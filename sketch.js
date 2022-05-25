@@ -365,7 +365,7 @@ function tutorialMouseClicked(){
 
 function level1(){
   background(0);
-  image(darkImg, w/2, h/2);
+  image(darkImg, w/2, h/2, 600, 600);
   // imageMode(CENTER);
   // imageMode(CENTER);
   // image(bckgImg, w/2, h/2, 600, 600);
