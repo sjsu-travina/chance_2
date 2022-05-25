@@ -369,7 +369,7 @@ function level1(){
   push();
   // imageMode(CENTER);
   // image(darkImg, 600, 600);
-  // imageMode(CENTER);
+  imageMode(CENTER);
   imageMode(CENTER);
   image(darkImg, w/2, h/2, 600, 600);
   pop();
