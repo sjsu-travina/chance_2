@@ -371,7 +371,7 @@ function level1(){
   // image(darkImg, 600, 600);
   // imageMode(CENTER);
   imageMode(CENTER);
-  image(darkImg, w/5, h/2, 600, 600);
+  image(darkImg, w/2, h/2, 600, 600);
   pop();
 
   if (random(1) <= 0.01){
