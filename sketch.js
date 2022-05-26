@@ -378,7 +378,7 @@ function level1(){
   text('Level 1', w/2, h/8.5);
 
 // check point values to win or lose the game
-  if (points >= 1000){
+  if (points >= 100){
     state = 'you win';
   } else if (points <= -1){
     state = 'game over';
@@ -460,7 +460,7 @@ function level2(){
 
 
 // check point values to win or lose the game
-  if (points >= 2000){
+  if (points >= 200){
     state = 'you win 2';
   } else if (points <= -1){
     state = 'game over';
@@ -542,7 +542,7 @@ function level3(){
 
 
   // check point values to win or lose the game
-    if (points >= 3000){
+    if (points >= 300){
       state = 'you win 3';
     } else if (points <= -1){
       state = 'game over';
@@ -634,13 +634,22 @@ function youWin3(){
 }
 
 function youWin3MouseClicked(){
-  // console.log('canvas is clicked on you win 3 page');
+//   // console.log('canvas is clicked on you win 3 page');
+//
+//   if (state = 'guide') {
+//   } else {
+//   state = 'level 1';
+// }
+//    points = 0;
+console.log('canvas is clicked on you win page');
 
-  if (state = 'guide') {
-  } else {
-  state = 'level 1';
-}
-   points = 0;
+
+    if (lives >= 10) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
+      lives++; // if you have a life, you lose one!
+      state = 'title';
+    }
+
+  points = 0;
 }
 
 function gameOver(){
@@ -685,16 +694,22 @@ function gameOver(){
 }
 
 function gameOverMouseClicked(){
-  console.log('canvas is clicked on game over page');
+  // console.log('canvas is clicked on game over page');
   // state = 'title'
+  //
+  //   if (lives >= 0) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
+  //     lives--; // if you have a life, you lose one!
+  //     state = 'level 1';
+  //   } else {
+  //     state = 'level 2';
+  //   }
+  //
+  // points = 0;
+  if (lives >= 0) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
+  lives--; // if you have a life, you lose one!
+  state = 'level 1';
+}
 
-    if (lives >= 0) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
-      lives--; // if you have a life, you lose one!
-      state = 'level 1';
-    } else {
-      state = 'level 2';
-    }
-
-  points = 0;
+points = 0;
 
 }
