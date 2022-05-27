@@ -378,7 +378,7 @@ function level1(){
   text('Level 1', w/2, h/8.5);
 
 // check point values to win or lose the game
-  if (points >= 100){
+  if (points >= 1000){
     state = 'you win';
   } else if (points <= -1){
     state = 'game over';
@@ -460,7 +460,7 @@ function level2(){
 
 
 // check point values to win or lose the game
-  if (points >= 200){
+  if (points >= 2000){
     state = 'you win 2';
   } else if (points <= -1){
     state = 'game over';
@@ -542,7 +542,7 @@ function level3(){
 
 
   // check point values to win or lose the game
-    if (points >= 300){
+    if (points >= 3000){
       state = 'you win 3';
     } else if (points <= -1){
       state = 'game over';
@@ -708,7 +708,7 @@ function gameOverMouseClicked(){
   if (lives >= 0) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
   lives--; // if you have a life, you lose one!
   state = 'level 1';
-} else if 
+} else if
 
 points = 0;
 
