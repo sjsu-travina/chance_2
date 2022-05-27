@@ -708,7 +708,7 @@ function gameOverMouseClicked(){
   if (lives >= 0) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
   lives--; // if you have a life, you lose one!
   state = 'level 1';
-}
+} else if 
 
 points = 0;
 
